@@ -7,7 +7,6 @@ import transjson from './utils/translations.json';
 dotenv.config();
 
 export const client = new Discord.Client({
-  checkUpdate: false,
   partials: [],
 });
 
@@ -30,21 +29,8 @@ client.on("ready", async () => {
   } else {
     setlang('en');
   }
-  if (client.guilds.cache.get('1014921352500756500')) {
-    if (client.guilds.cache.get('1014921352500756500').channels.cache.get('1173960818841354382')) {
-      
-      (client.guilds.cache.get('1014921352500756500').channels.cache.get('1173960818841354382') as TextChannel).send({ content: 'Hello world' }).catch(error => {});
-    } else {
-      console.log('...');
-    }
-  
-  } else {
-    console.log(gradient(["red", "orange"])(t('nosvr')));
-    process.exit(1);
-  }
   menutext(client);
-  choiceinit(client);
-  const r = new Discord.RichPresence()
+  const r = new Discord.RichPresence(client)
     .setApplicationId('1146949248617828455')
     .setType('PLAYING')
     .setURL('https://discord.gg/infinite-community-1014921352500756500')
@@ -72,7 +58,7 @@ if (!token) {
   rl.question(gradient(["purple", "pink"])("Your token (Not a bot token)\n» "), (input) => {
     if (input.trim() === '') {
       console.log(gradient(["red", "orange"])("this token is empty"));
-      process.kill(1);
+      process.exit(0);
     } else {
       
       client.login(input)

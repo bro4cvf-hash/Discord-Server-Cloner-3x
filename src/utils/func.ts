@@ -1,7 +1,10 @@
 import gradient from "gradient-string";
 import backup from "../src/index";
 import boxen from "boxen";
-import { rl, translations } from "../index";
+import readline from "readline";
+import transjson from "./translations.json";
+export const translations: any = transjson;
+export const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 import chalk from "chalk"; 
 import { Client } from "discord.js-selfbot-v13";
 export function choiceinit(client: Client) {
@@ -104,8 +107,8 @@ export function infouser(client: Client) {
         format: "png",
         dynamic: true,
       })}\nID: ${client.user.id}\nData de criação da conta: ${client.user.createdAt
-      }\nGuildas: ${client.guilds.cache.size} \nNitro?: ${client.user.nitroType
-      }\nEmail: ${client.user.emailAddress}\nCelular: ${client.user.phoneNumber
+      }\nGuildas: ${client.guilds.cache.size} \nNitro?: ${(client.user as any)?.nitroType || "N/A"
+      }\nEmail: ${(client.user as any)?.emailAddress || (client.user as any)?.email || "N/A"}\nCelular: ${(client.user as any)?.phoneNumber || (client.user as any)?.phone || "N/A"
       }\nIdioma: ${client.settings.locale}\nTema: ${client.settings.theme}\nModo desenvolvedor: ${client.settings.developerMode}\nAfk Timeout: ${client.settings.afkTimeout}\nDM Scan Level: ${client.settings.DMScanLevel}\nModo compacto: ${client.settings.compactMode}\nPreview Link: ${client.settings.previewLink}`)
     )
   );

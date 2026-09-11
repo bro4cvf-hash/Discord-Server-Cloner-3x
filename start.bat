@@ -1,72 +1,47 @@
 @echo off
 setlocal
+cd /d "%~dp0"
+title Discord Server Cloner
 
-set "nodejs_path="
-
-echo Tentando encontrar o Node.js
-timeout /nobreak /t 1 >nul
-
-:loading
-echo.
-echo Loading.
-timeout /nobreak /t 1 >nul
-cls
-
-echo.
-echo Loading..
-timeout /nobreak /t 1 >nul
-cls
-
-echo.
-echo Loading...
-timeout /nobreak /t 1 >nul
-cls
-
-for /f "tokens=*" %%i in ('where node') do (
-    set "nodejs_path=%%i"
+echo Checking Node.js installation...
+where node >nul 2>nul
+if %errorlevel% neq 0 (
+    echo [ERROR] Node.js is not installed or not found in your PATH.
+    echo Please install Node.js from https://nodejs.org/
+    pause
+    exit /b 1
 )
-
-if not defined nodejs_path (
-    echo Node.js não encontrado, terá uma tentativa de instalação usando scoop, provavelmente irá falhar
-    where scoop >nul 2>nul
-    if %errorlevel% neq 0 (
-        echo Instalando Scoop...
-        echo Quando o scoop for instalado feche e abra o terminal
-        Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-        echo.
-        pause
-        exit /b 1
-    )
-
-    echo Instalando Node.js usando Scoop...
-    call scoop install nodejs
-
-    where node >nul 2>nul
-    if %errorlevel% neq 0 (
-        echo Não foi possível instalar nodejs, instale manualmente: https://nodejs.org/en
-        pause
-        exit /b 1
-    )
-
-    for /f "tokens=*" %%i in ('where node') do (
-        set "nodejs_path=%%i"
-    )
-)
-
-echo Node.js encontrado em: %nodejs_path%
-node --version
 
 if not exist "node_modules" (
-    echo Instalando...
-    call npm i
+    echo Installing dependencies...
+    call npm install
 )
 
-where tsx >nul 2>nul
+echo.
+echo ===================================================
+echo             DISCORD SERVER CLONER 2.0
+echo ===================================================
+echo  [1] Web Dashboard (Modern UI in browser - Default)
+echo  [2] Terminal CLI  (Original console mode)
+echo ===================================================
+set /p choice="Select mode (1 or 2, default is 1): "
+
+if "%choice%"=="2" (
+    echo Starting Terminal CLI...
+    call npm run start:cli
+) else (
+    echo Starting Web UI Dashboard...
+    timeout /t 2 /nobreak >nul
+    start http://localhost:4567
+    call npm start
+)
+
 if %errorlevel% neq 0 (
-    echo instalando tsx..
-    call npm i -g tsx
+    echo.
+    echo [The process exited with code %errorlevel%]
 )
 
-tsx .
+echo.
+echo Press any key to exit...
+pause >nul
 
-endlocal

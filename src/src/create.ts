@@ -89,10 +89,9 @@ export async function getChannels(guild: Guild, options: CreateOptions) {
             others: []
         };
         // Gets the list of the categories and sort them by position
-        const categories = (guild.channels.cache
-            .filter((ch) => ch.type === 'GUILD_CATEGORY') as Collection<Snowflake, CategoryChannel>)
-            .sort((a, b) => a.position - b.position)
-            .toJSON() as CategoryChannel[]; 
+        const categories = ([...guild.channels.cache.values()]
+            .filter((ch): ch is CategoryChannel => ch.type === 'GUILD_CATEGORY'))
+            .sort((a, b) => a.position - b.position);
         for (const category of categories) {
             const categoryData: CategoryData = {
                 name: category.name, // The name of the category
@@ -100,7 +99,7 @@ export async function getChannels(guild: Guild, options: CreateOptions) {
                 children: [] // The children channels of the category
             };
             // Gets the children channels of the category and sort them by position
-            const children = category.children.sort((a, b) => a.position - b.position).toJSON();
+            const children = [...category.children.values()].sort((a, b) => a.position - b.position);
             for (const child of children) {
                 // For each child channel
                 if (child.type === 'GUILD_TEXT'|| child.type === 'GUILD_NEWS') {
@@ -114,14 +113,13 @@ export async function getChannels(guild: Guild, options: CreateOptions) {
             channels.categories.push(categoryData); // Update channels object
         }
         // Gets the list of the other channels (that are not in a category) and sort them by position
-        const others = (guild.channels.cache
+        const others = ([...guild.channels.cache.values()]
             .filter((ch) => {
                 return !ch.parent && ch.type !== 'GUILD_CATEGORY'
                     && ch.type !== 'GUILD_STORE' // there is no way to restore store channels, ignore them
                     && ch.type !== 'GUILD_NEWS_THREAD' && ch.type !== 'GUILD_PRIVATE_THREAD' && ch.type !== 'GUILD_PUBLIC_THREAD' // threads will be saved with fetchTextChannelData
-            }) as Collection<Snowflake, Exclude<GuildChannel, ThreadChannel>>)
-            .sort((a, b) => a.position - b.position)
-            .toJSON();
+            }) as Exclude<GuildChannel, ThreadChannel>[])
+            .sort((a, b) => a.position - b.position);
         for (const channel of others) {
             // For each channel
             if (channel.type === 'GUILD_TEXT' || channel.type === 'GUILD_NEWS') {
