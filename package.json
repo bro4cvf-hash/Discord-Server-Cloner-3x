@@ -1,7 +1,7 @@
 {
-	"name": "discord-server-cloner-2",
-	"version": "2.0",
-	"description": "Discord Server Cloner 2.0 - Infinite community",
+	"name": "discord-server-cloner-3x",
+	"version": "3.0.0",
+	"description": "Discord Server Cloner 3x - Modern Web Dashboard & Cloning Engine",
 	"main": "src/index",
 	"scripts": {
 		"pass": "start.bat",

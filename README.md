@@ -1,108 +1,97 @@
-# Discord Server Cloner 2x (Web GUI Edition) 🚀
+<div align="center">
 
-> **A powerful, modern Discord server replicator featuring a sleek Web UI Dashboard, real-time live console, and granular cloning controls.**
-> 
-> *Enhanced fork of [joaokristani/Discord-Server-Cloner-2x](https://github.com/joaokristani/Discord-Server-Cloner-2x)*
+# ⚡ Discord Server Cloner 3x
 
----
+**Next-Gen Discord Server Replicator & Archiver with a Real-Time Web Dashboard**
 
-## ✨ What's New: Modern Web GUI Dashboard
+[![Version](https://img.shields.io/badge/release-v3.0.0-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://github.com/bro4cvf-hash/Discord-Server-Cloner-3x)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![NodeJS](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![License](https://img.shields.io/badge/License-MIT-FEE75C?style=for-the-badge&logo=open-source-initiative&logoColor=black)](LICENSE)
 
-We upgraded the project from a command-line-only script to a full-featured **Modern Web UI Dashboard**! Now you can easily manage, customize, and monitor the entire cloning process visually in your browser.
+<p align="center">
+  <a href="#-gui-showcase">Showcase</a> •
+  <a href="#-core-features">Features</a> •
+  <a href="#-quickstart">Quickstart</a> •
+  <a href="#-cli-mode">CLI Mode</a>
+</p>
 
-### 🖼️ Screenshots
-
-#### 1. Server Browser & Destination Selection
-Search and pick your source server visually, and decide whether to create a fresh server, clone into an existing server, or generate an official Discord template.
-![Server Browser and Destination Selection](assets/gui-servers.png)
-
-#### 2. Granular Cloning Components
-Toggle exactly what elements you want to duplicate before starting:
-- **Roles & Colors:** Role hierarchy, hex colors, hoist settings, and member permissions
-- **Categories & Channels:** Voice channels, text channels, announcements, topics, and category layouts
-- **Channel Permissions:** Synced role view/send permissions and private channel lock states
-- **Server Emojis:** Custom static and animated emojis
-- **Save Backup JSON:** Automatically exports a backup file to your project directory
-- **Message History:** Archive message history per channel
-![Cloning Components & Options](assets/gui-options.png)
-
-#### 3. Real-Time Live Execution Console
-Watch the live cloning progress with percentage tracking, granular step logs, and instant abort capability.
-![Live Progress and Console](assets/gui-progress.png)
+</div>
 
 ---
 
-## ⚡ Features
+## 📸 GUI Showcase
 
-- 🌐 **Modern Web Dashboard:** Beautiful dark-mode UI accessible at `http://localhost:4567` (opens automatically on launch).
-- 🎯 **Visual Server Selector:** Search and browse all servers your account has access to.
-- ⚙️ **Customizable Cloning Options:** Selectively clone channels, roles, permissions, emojis, and messages.
-- 📊 **Real-time SSE Progress Streaming:** Live execution logs and progress percentage bar.
-- 🛑 **Abort Anytime:** Cancel a running clone operation safely with the Abort button.
-- 💻 **Dual Mode:** Use either the new **Web GUI** or classic **Terminal CLI**.
-- 🛡️ **Rate Limit Protection:** Built-in safeguards and delays to prevent Discord rate limits and bans.
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- A Discord User Token
-
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/bro4cvf-hash/Discord-Server-Cloner-2x.git
-   cd Discord-Server-Cloner-2x
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+<table align="center" width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <sub><b>Step 1 & 2: Server Search & Smart Destination</b></sub><br/>
+      <img src="assets/gui-servers.png" alt="Server Selector" />
+    </td>
+    <td width="50%" align="center">
+      <sub><b>Step 3: Granular Component Toggles</b></sub><br/>
+      <img src="assets/gui-options.png" alt="Cloning Options" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <sub><b>Live Execution Engine: Real-Time SSE Console & Abort</b></sub><br/>
+      <img src="assets/gui-progress.png" alt="Live Console" />
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 🎮 How to Run
+## ⚡ Core Features
 
-### Method 1: Using `start.bat` (Windows Quick Launch)
-Simply double-click `start.bat` or run:
-```cmd
-start.bat
-```
-It will automatically check dependencies and ask you whether to launch the **Web Dashboard** (default) or the **Terminal CLI**.
+| Feature | Description |
+| :--- | :--- |
+| 🖥️ **Modern Web GUI** | Dark-mode browser dashboard at `http://localhost:4567` with auto-launch. |
+| 🎯 **Smart Destinations** | Auto-create fresh servers, overwrite existing ones, or generate `discord.new` templates. |
+| 🎛️ **Granular Toggles** | Selectively replicate roles, channel tree, permissions, emojis, backups & chat logs. |
+| 📡 **Real-time SSE Stream** | Live percentage tracking, atomic task logs, and instant cancellation. |
+| 🛡️ **Anti-Rate-Limit** | Smart throttling and queue algorithms to safeguard your account. |
 
 ---
 
-### Method 2: Web GUI Dashboard (Recommended)
-Run:
+## 🚀 Quickstart
+
 ```bash
+# 1. Clone repository
+git clone https://github.com/bro4cvf-hash/Discord-Server-Cloner-3x.git
+cd Discord-Server-Cloner-3x
+
+# 2. Install dependencies
+npm install
+
+# 3. Launch Web Dashboard
 npm start
 ```
-The server will start and automatically open your default browser at:
-```
-http://localhost:4567
-```
+
+> [!TIP]
+> **Windows Users:** Simply double-click `start.bat` for automatic dependency verification and one-click launch!
 
 ---
 
-### Method 3: Classic Terminal CLI
-If you prefer running in the terminal without a browser:
+<details id="-cli-mode">
+<summary><b>💻 Classic Terminal CLI Mode</b></summary>
+
+Prefer running strictly in your terminal? Use:
 ```bash
 npm run start:cli
 ```
+</details>
+
+<details>
+<summary><b>⚠️ Safety Advisory & Disclaimer</b></summary>
+
+> [!IMPORTANT]
+> Automating user accounts (`selfbot`) violates Discord's Terms of Service. Always test on secondary/burner accounts. Use responsibly.
+</details>
 
 ---
 
-## ⚠️ Disclaimer
-
-This tool uses a Discord user token (`discord.js-selfbot-v13`) to automate cloning operations. Automating user accounts violates the Discord Terms of Service. Use at your own discretion and responsibility.
-
----
-
-## 🤝 Credits & Acknowledgments
-
-- Original project by [joaokristani](https://github.com/joaokristani/Discord-Server-Cloner-2x).
-- Enhanced with Web UI Dashboard, real-time SSE progress tracking, and bug fixes by [bro4cvf-hash](https://github.com/bro4cvf-hash).
+<div align="center">
+<sub>Enhanced fork of <a href="https://github.com/joaokristani/Discord-Server-Cloner-2x">joaokristani/Discord-Server-Cloner-2x</a> • Built by <a href="https://github.com/bro4cvf-hash">bro4cvf-hash</a></sub>
+</div>

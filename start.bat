@@ -19,7 +19,7 @@ if not exist "node_modules" (
 
 echo.
 echo ===================================================
-echo             DISCORD SERVER CLONER 2.0
+echo             DISCORD SERVER CLONER 3.0
 echo ===================================================
 echo  [1] Web Dashboard (Modern UI in browser - Default)
 echo  [2] Terminal CLI  (Original console mode)
